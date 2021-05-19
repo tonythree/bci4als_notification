@@ -1,0 +1,33 @@
+service: bci4als-notification
+app: bci4als-notification
+org: tonyythree
+
+frameworkVersion: "2"
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: python3.8
+  lambdaHashingVersion: 20201221
+  region: eu-west-1
+  stage: ${opt:stage, "staging"}
+
+functions:
+  publish_notification:
+    handler: lambdas/publish_notification.handler
+    events:
+      - http:
+          path: /notification
+          method: post
+
+custom:
+  topicName: ${self:service}-${self:provider.stage}
+
+resources:
+  Resources:
+    NotificationsTopic:
+      Type: AWS::SNS::Topic
+      Properties:
+        TopicName: topicName

@@ -1,0 +1,8 @@
+{
+    "Template": {
+        "TemplateName": "template-1",
+        "SubjectPart": "🚀 {{name}}, you have a new alert!",
+        "HtmlPart": "<h1>Hey {{name}},</h1><p>You have a new alert from {{sender}}.</p>",
+        "TextPart": "Hey {{name}},\r\n You have a new alert from {sender}}."
+    }
+}
